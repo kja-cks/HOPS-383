@@ -33,4 +33,5 @@ class DriveSubsystem : public frc2::SubsystemBase {
   frc::PWMSparkMax m_rightFront{3};
   frc::PWMSparkMax m_rightRear{4};
   frc::MotorControllerGroup m_rightMotors{m_rightFront, m_rightRear};
+  frc::DifferentialDrive m_robotDrive{m_leftMotors, m_rightMotors};
 };
