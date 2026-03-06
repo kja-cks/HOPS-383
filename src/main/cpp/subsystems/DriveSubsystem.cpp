@@ -4,7 +4,10 @@
 DriveSubsystem::DriveSubsystem() {
   // Invert the right side motors so that positive voltages
   // result in both sides moving forward.
-  m_rightMotors.SetInverted(true); 
+  //m_right.SetInverted(true); 
+  //m_robotDrive.SetSafetyEnabled(true);
+  //m_robotDrive.SetExpiration(0.1_s);
+  
 }
 
 void DriveSubsystem::Periodic() {
@@ -13,5 +16,5 @@ void DriveSubsystem::Periodic() {
 
 void DriveSubsystem::ArcadeDrive(double fwd, double rot) {
   // Use the DifferentialDrive class's ArcadeDrive method.
-  m_robotDrive.ArcadeDrive(fwd, rot);
+  //this->m_robotDrive.ArcadeDrive(fwd, rot);
 }

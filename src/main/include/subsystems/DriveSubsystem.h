@@ -1,10 +1,13 @@
 #pragma once
 
+
 #include <frc2/command/SubsystemBase.h>
 #include <frc/motorcontrol/PWMSparkMax.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/motorcontrol/MotorControllerGroup.h>
 #include <frc/Joystick.h>
+#include <rev/SparkMax.h>
+using namespace rev::spark;
 
 class DriveSubsystem : public frc2::SubsystemBase {
  public:
@@ -26,12 +29,13 @@ class DriveSubsystem : public frc2::SubsystemBase {
  private:
   // Components (e.g. motors, speed controllers, etc) should generally be
   // created here, rather than in the constructor.
-  frc::PWMSparkMax m_leftFront{1};
-  frc::PWMSparkMax m_leftRear{2};
-  frc::MotorControllerGroup m_leftMotors{m_leftFront, m_leftRear};
 
-  frc::PWMSparkMax m_rightFront{3};
-  frc::PWMSparkMax m_rightRear{4};
-  frc::MotorControllerGroup m_rightMotors{m_rightFront, m_rightRear};
-  frc::DifferentialDrive m_robotDrive{m_leftMotors, m_rightMotors};
+  //SparkMax m_tool1 = SparkMax(1, SparkLowLevel::MotorType::kBrushless);
+  //SparkMax m_tool2 = SparkMax(2, SparkLowLevel::MotorType::kBrushless);
+
+  //SparkMax m_left = SparkMax(3, SparkLowLevel::MotorType::kBrushed);
+  //SparkMax m_right = SparkMax(4, SparkLowLevel::MotorType::kBrushed);
+  //frc::MotorControllerGroup m_driveMotors = frc::MotorControllerGroup(m_leftDrive, m_rightDrive);
+
+  //frc::DifferentialDrive m_robotDrive = frc::DifferentialDrive(m_tool1, m_tool2);
 };

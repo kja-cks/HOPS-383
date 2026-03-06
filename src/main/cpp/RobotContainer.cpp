@@ -6,13 +6,16 @@
 RobotContainer::RobotContainer() {
   // Configure button bindings
   ConfigureButtonBindings();
-
+  //m_tool1 = SparkMax(1, SparkLowLevel::MotorType::kBrushless);
+  //m_tool2 = SparkMax(2, SparkLowLevel::MotorType::kBrushless);
   // Set the default command for the DriveSubsystem.
-  m_drive.SetDefaultCommand(std::move(m_driveWithJoystickCmd));
+  //m_drive.SetDefaultCommand(DriveWithJoystick(&m_drive, &m_driverJoystick));
+  //frc::DifferentialDrive m_robotDrive = frc::DifferentialDrive(m_tool1, m_tool2);
+
 }
 
 void RobotContainer::ConfigureButtonBindings() {
-  // Configure your button bindings here, for example:
+  // Configure your button bindings here, for example:;
   // frc2::JoystickButton(&m_driverJoystick, 1).WhenPressed(...);
 }
 

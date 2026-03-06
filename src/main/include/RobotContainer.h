@@ -15,12 +15,14 @@ class RobotContainer {
  private:
   // Subsystems
   DriveSubsystem m_drive;
+  //SparkMax m_tool1;
+  //SparkMax m_tool2;
 
   // Joysticks
-  frc::Joystick m_driverJoystick{0};
+  //frc::Joystick m_driverJoystick{0};
 
   // Commands
-  DriveWithJoystick m_driveWithJoystickCmd{ &m_drive, [&] { return m_driverJoystick.GetY(); }, [&] { return m_driverJoystick.GetX(); } };
+  //DriveWithJoystick m_driveWithJoystickCmd{ &m_drive, &m_driverJoystick };
 
   void ConfigureButtonBindings();
 };

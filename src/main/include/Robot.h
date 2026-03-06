@@ -18,9 +18,9 @@
 #include <frc/motorcontrol/Spark.h>
 #include <frc/motorcontrol/PWMSparkMax.h>
 #include <frc/DataLogManager.h>
-
-
 #include "RobotContainer.h"
+#include <rev/SparkMax.h>
+using namespace rev::spark;
 
 
 class Robot : public frc::TimedRobot {
@@ -44,18 +44,15 @@ class Robot : public frc::TimedRobot {
   std::optional<frc2::CommandPtr> m_autonomousCommand;
   std::optional<frc2::CommandPtr> m_teleopCommand;
 // Robot drive system
-  frc::Spark m_left{1};
-  frc::Spark m_right{2};
-  frc::PWMSparkMax m_tool1{3};
-  frc::PWMSparkMax m_tool2{4};
-  frc::PWMSparkMax m_tool3{5};
-  frc::DifferentialDrive m_robotDrive{
-      [&](double output) { m_left.Set(output); },
-      [&](double output) { m_right.Set(output); },    
-      };
-
 
   frc::XboxController m_controller{0};
   frc::Timer m_timer;
   RobotContainer m_container;
+  
+  rev::spark::SparkMax neo_1 = rev::spark::SparkMax(1, rev::spark::SparkLowLevel::MotorType::kBrushless);
+  rev::spark::SparkMax neo_2 = rev::spark::SparkMax(2, rev::spark::SparkLowLevel::MotorType::kBrushless);
+  rev::spark::SparkMax old_1 = rev::spark::SparkMax(3, rev::spark::SparkLowLevel::MotorType::kBrushed);
+  rev::spark::SparkMax old_2 = rev::spark::SparkMax(4, rev::spark::SparkLowLevel::MotorType::kBrushed);
+  frc::DifferentialDrive dd = frc::DifferentialDrive(old_2, old_1);
+  frc::XboxController m_driverJoystick{0};
 };
