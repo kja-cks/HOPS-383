@@ -68,18 +68,15 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
   
-  std::chrono::milliseconds autonDelay = std::chrono::milliseconds(2500);
+  std::chrono::milliseconds autonTimer = std::chrono::milliseconds(1000);
 
-  dd.TankDrive(-0.5, 0.5);
-  std::this_thread::sleep_for(autonDelay);
-  dd.TankDrive(0, 0);
-
- /* if(float(m_timer.Get()) < 1.0){
-    m_robotDrive.ArcadeDrive(0.0,1.0);
+  float i = 0;
+    if(float(m_timer.Get()) < 0.5){
+    dd.TankDrive(0.7,-0.7);
   }
   else{
-    m_robotDrive.ArcadeDrive(0.0, 0.0);
-  }*/
+    dd.TankDrive(0.0, 0.0);
+  }
 }
 //credit to wpilib
 void Robot::TeleopInit() {
@@ -110,28 +107,28 @@ void Robot::TeleopPeriodic() {
    if(m_driverJoystick.GetLeftBumperButtonPressed())
    {
    
-    neo_1.Set(-0.9);
+    neo_1.Set(-1);
    }
   else if(m_driverJoystick.GetLeftBumperButtonReleased()){
     neo_1.Set(0);
    }
    
-  if(m_driverJoystick.GetYButtonPressed())
+  if(m_driverJoystick.GetRightBumperButtonPressed())
    {
-    neo_1.Set(0.4);
+    neo_1.Set(1);
    }
-  else if(m_driverJoystick.GetYButtonReleased()){
+  else if(m_driverJoystick.GetRightBumperButtonReleased()){
     neo_1.Set(0);
    }
 
-   if (m_driverJoystick.GetRightBumperButtonPressed())
+   if (m_driverJoystick.GetYButtonPressed())
    {
     neo_2.Set(0.1);
     std::this_thread::sleep_for(openningDelay);
     neo_2.Set(0);
     std::this_thread::sleep_for(opennedDelay);
    }
-   else if(m_controller.GetRightBumperButtonReleased()){
+   else if(m_controller.GetYButtonReleased()){
     neo_2.Set(-0.1);
     std::this_thread::sleep_for(openningDelay);
     neo_2.Set(0);
